@@ -2,15 +2,6 @@
   "name": "react-native-worry-free-style-sheet",
   "version": "1.0.0-bata.1",
   "description": "",
-  "main": "lib/index.js",
-  "files": [
-    "lib/**/*"
-  ],
-  "source": "src/index",
-  "scripts": {
-    "build": "tsc",
-    "release": "release-it"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/syanbo/react-native-worry-free-style-sheet.git"
@@ -19,16 +10,40 @@
     "react-native",
     "StyleSheet"
   ],
-  "author": "",
+  "author": "Syan",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/syanbo/react-native-worry-free-style-sheet/issues"
   },
   "homepage": "https://github.com/syanbo/react-native-worry-free-style-sheet#readme",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "source": "src/index",
+  "scripts": {
+    "clean": "del \"./(lib)\"",
+    "build": "npm run clean && tsc",
+    "release": "release-it"
+  },
   "devDependencies": {
     "@release-it/conventional-changelog": "^2.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "del-cli": "^3.0.1",
+    "husky": "^6.0.0",
     "release-it": "^14.5.0",
     "typescript": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint && yarn build"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "release-it": {
     "git": {
@@ -36,7 +51,7 @@
       "tagName": "v${version}"
     },
     "npm": {
-      "publish": false
+      "publish": true
     },
     "github": {
       "release": true
@@ -46,6 +61,11 @@
         "preset": "angular",
         "infile": "CHANGELOG.md"
       }
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

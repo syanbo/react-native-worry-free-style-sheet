@@ -1,0 +1,51 @@
+{
+  "name": "react-native-worry-free-style-sheet",
+  "version": "1.0.0-bata.1",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "source": "src/index",
+  "scripts": {
+    "build": "tsc",
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syanbo/react-native-worry-free-style-sheet.git"
+  },
+  "keywords": [
+    "react-native",
+    "StyleSheet"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syanbo/react-native-worry-free-style-sheet/issues"
+  },
+  "homepage": "https://github.com/syanbo/react-native-worry-free-style-sheet#readme",
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^2.0.1",
+    "release-it": "^14.5.0",
+    "typescript": "^4.2.3"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": false
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
+  }
+}

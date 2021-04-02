@@ -1,3 +1,5 @@
+# [1.0.0-rc.0](https://github.com/syanbo/react-native-worry-free-style-sheet/compare/v1.0.0-bata.3...v1.0.0-rc.0) (2021-04-02)
+
 # 1.0.0-bata.3 (2021-04-02)
 
 

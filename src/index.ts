@@ -5,10 +5,10 @@
  */
 // @ts-ignore
 import { Platform, StyleSheet } from 'react-native';
-import * as screenUtil from './screenUtil';
+import * as screenUtil from './util';
 
 const { hairlineWidth, absoluteFill, flatten, absoluteFillObject, compose } = StyleSheet;
-const { scaleSize, setSpText } = screenUtil;
+const { scaleSize } = screenUtil;
 
 const transformKeys = {
     fontSize: true,
@@ -69,30 +69,20 @@ function transformStyle(styleObj, prop) {
         return;
     }
     if (value.hasOwnProperty('ceilValue')) {
-        styleObj[prop] = Math.ceil(scaleSize(value.ceilValue));
+        styleObj[prop] = value.ceilValue;
         return;
     }
     if (isNaN(value)) return;
-    if (prop === 'fontSize') {
-        styleObj[prop] = setSpText(value);
-        return;
-    }
     styleObj[prop] = scaleSize(value);
 }
 
 export default {
     hairlineWidth,
-    // 使用这个值, 来规避IDE的警告
     hairlineUnit: hairlineWidth,
-
     absoluteFill,
-
     absoluteFillObject,
-
     compose,
-
     flatten,
-
     create: StyleSheet.create((obj) => {
         for (const key in obj) {
             const styleObj = obj[key];
@@ -104,9 +94,7 @@ export default {
         }
         return obj;
     }),
-
     ...screenUtil,
-
     isIOS: Platform.OS === 'ios',
     isAndroid: Platform.OS === 'android',
 };
@@ -121,6 +109,6 @@ export class IgnoreValue {
 export class CeilValue {
     private ceilValue: number;
     constructor(value) {
-        this.ceilValue = value;
+        this.ceilValue = Math.ceil(scaleSize(value));
     }
 }

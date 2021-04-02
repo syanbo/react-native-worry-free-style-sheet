@@ -1,14 +1,15 @@
 {
   "name": "react-native-worry-free-style-sheet",
   "version": "1.0.0-bata.3",
-  "description": "",
+  "description": "省心的React-Native StyleSheet工具方法",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/syanbo/react-native-worry-free-style-sheet.git"
   },
   "keywords": [
     "react-native",
-    "StyleSheet"
+    "StyleSheet",
+    "style"
   ],
   "author": "Syan",
   "license": "MIT",
@@ -24,6 +25,7 @@
   "scripts": {
     "clean": "del ./lib",
     "build": "npm run clean && tsc",
+    "preRelease": "release-it --preRelease",
     "release": "release-it"
   },
   "devDependencies": {
